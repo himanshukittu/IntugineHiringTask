@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from '../services/general.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit
   password:string;
   _IsInvalid:boolean=false;
 
-  constructor(private generalService:GeneralService) { }
+  constructor(private generalService:GeneralService,private route:Router) { }
 
   ngOnInit() {
   }
@@ -25,7 +26,9 @@ export class LoginComponent implements OnInit
     }
     else{
       this.generalService.logIn(this.userName,this.password).subscribe(response=>{
+        sessionStorage.setItem("auth-token",response['token']);
         console.log(response);
+        this.route.navigateByUrl("/dashboard");
       },err=>{
         this._IsInvalid=true;
         console.log(err);

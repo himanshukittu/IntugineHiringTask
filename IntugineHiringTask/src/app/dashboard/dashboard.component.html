@@ -1,0 +1,16 @@
+<div class="container"><br>
+  <div class="row">
+    <div class="col-10">
+      <div style="border:8px solid rgba(180, 172, 172, 0.651); border-radius: 5px;">
+        <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
+          <agm-marker  [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+      </div>
+    </div>
+    <div class="col-2" *ngIf="devices" >
+      <div class="alert alert-info" *ngFor="let val of devices">
+      <span>{{val.device}}</span> <span> <input type="checkbox" [name]="val" [id]="val" style="cursor: pointer; float:right; height:25px; width:25px;"></span> 
+      </div>
+    </div>
+  </div>
+</div>
