@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit
     else{
       this.generalService.logIn(this.userName,this.password).subscribe(response=>{
         sessionStorage.setItem("auth-token",response['token']);
-        console.log(response);
+        // console.log(response);
         this.route.navigateByUrl("/dashboard");
       },err=>{
         this._IsInvalid=true;
