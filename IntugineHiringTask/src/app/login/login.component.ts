@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GeneralService } from '../services/general.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit
       this._IsInvalid=true;
     }
     else{
+      let date=new Date();
       this.generalService.logIn(this.userName,this.password).subscribe(response=>{
         sessionStorage.setItem("auth-token",response['token']);
         // console.log(response);
